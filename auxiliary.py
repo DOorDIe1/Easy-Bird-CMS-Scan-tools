@@ -50,7 +50,7 @@ def http_type(url):
 
 def searchLine(keyLine, url):
     # searchLine代码来自：https://www.cnblogs.com/Amy20182018/articles/8962013.html
-    f = open("web.txt", encoding=http_type(url))
+    f = open("date\\web.txt", encoding=http_type(url))
     line = f.read()
     if keyLine in line:
         f.close()
@@ -61,4 +61,14 @@ def searchLine(keyLine, url):
     pass
 
 
-
+def searchrobots(keyLine, url):  # 新版本更改了缓存地址 D:2020年12月24日16:59:19
+    # searchLine代码来自：https://www.cnblogs.com/Amy20182018/articles/8962013.html
+    f = open("date\\robots.txt", encoding=http_type(url))
+    line = f.read()
+    if keyLine in line:
+        f.close()
+        return "Pass"
+    else:
+        f.close()
+        return "Failed"
+    pass

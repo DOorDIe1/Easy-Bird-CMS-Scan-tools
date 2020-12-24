@@ -14,27 +14,28 @@ This script can be used for CMS recognition based on some website features, and 
 """
 import auxiliary
 import files
+import os
 
-
-def discuzrobots(url, uurl):
-    if auxiliary.searchLine('Discuz! X3', url) == "Pass":
+def discuzrobots(url):
+    if auxiliary.searchrobots('Discuz! X3', url) == "Pass":
         print("从robots.txt检测中得到", url, "可能是Discuz X3站点！")
-    if auxiliary.searchLine('/uc_server/', url) == "Pass":
+    if auxiliary.searchrobots('/uc_server/', url) == "Pass":
         print("从robots.txt检测中得到", url, "可能是Discuz X3站点！（存在uc_server）")
     pass
 
 
 def dederobots(url, uurl):
-    if auxiliary.searchLine('/plus/feedback_js.php', url) == "Pass":
+    if auxiliary.searchrobots('/plus/feedback_js.php', url) == "Pass":
         print("从robots.txt检测中得到", url, "可能是dedecms站点！")
-        files.dedever(uurl)
-    if auxiliary.searchLine('/plus/shops_buyaction.php', url) == "Pass":
+        files.dedever(uurl)  # 下同，只有符合条件才会进行文件判断
+    if auxiliary.searchrobots('/plus/shops_buyaction.php', url) == "Pass":
         print("从robots.txt检测中得到", url, "可能是dedecms站点！")
         files.dedever(uurl)
     pass
 
 
 def allrobots(url, uurl):
-    discuzrobots(url, uurl)
+    discuzrobots(url)
     dederobots(url, uurl)
+    os.rmove("date\\robots.txt")
     pass

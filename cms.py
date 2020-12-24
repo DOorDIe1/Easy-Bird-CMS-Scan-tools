@@ -97,9 +97,22 @@ def dedecms(url):
     pass
 
 
+def Typecho(url):
+    if auxiliary.searchLine('Typecho', url) == "Pass":
+        print("您扫描的网站" + url + "可能是Typecho的站点")
+    if auxiliary.searchLine('content="Typecho 1.1/17.10.30"', url) == "Pass":
+        print("您扫描的网站" + url + "可能是Typecho 1.1的站点，更新时间为2017.10.30")
+    if auxiliary.searchLine('content="typecho,php,blog"', url) == "Pass":
+        print("您扫描的网站" + url + "可能是Typecho PHP的站点。")
+    else:
+        print("站点可能不是Typecho哦~")
+    pass
+
+
 def allcms(url):
     discuz(url)
     Z_Blog(url)
     WordPress(url)
     dedecms(url)
+    Typecho(url)
     pass
