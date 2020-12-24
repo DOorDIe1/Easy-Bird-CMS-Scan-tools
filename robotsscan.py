@@ -37,5 +37,5 @@ def dederobots(url, uurl):
 def allrobots(url, uurl):
     discuzrobots(url)
     dederobots(url, uurl)
-    os.rmove("date\\robots.txt")
+    os.remove("date\\robots.txt")
     pass
